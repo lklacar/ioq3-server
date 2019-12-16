@@ -1,33 +1,3 @@
-/*
-===========================================================================
-Copyright (C) 1999-2005 Id Software, Inc.
-
-This file is part of Quake III Arena source code.
-
-Quake III Arena source code is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 2 of the License,
-or (at your option) any later version.
-
-Quake III Arena source code is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with Quake III Arena source code; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-===========================================================================
-*/
-
-/*****************************************************************************
- * name:		be_ai_weap.c
- *
- * desc:		weapon AI
- *
- * $Archive: /MissionPack/code/botlib/be_ai_weap.c $
- *
- *****************************************************************************/
 
 #include "../qcommon/q_shared.h"
 #include "l_libvar.h"
@@ -72,11 +42,11 @@ static fielddef_t weaponinfo_fields[] =
                 {"acceleration",   WEAPON_OFS(
                                            acceleration),      FT_FLOAT},        //"acceleration" * time (in seconds) + "speed" = projectile speed
                 {"recoil",         WEAPON_OFS(recoil),         FT_FLOAT |
-                                                               FT_ARRAY,            3},        //amount of recoil the player gets from the weapon
+                                                               FT_ARRAY, 3},        //amount of recoil the player gets from the weapon
                 {"offset",         WEAPON_OFS(offset),         FT_FLOAT |
-                                                               FT_ARRAY,            3},        //projectile start offset relative to eye and view angles
+                                                               FT_ARRAY, 3},        //projectile start offset relative to eye and view angles
                 {"angleoffset",    WEAPON_OFS(angleoffset),    FT_FLOAT |
-                                                               FT_ARRAY,            3},//offset of the shoot angles relative to the view angles
+                                                               FT_ARRAY, 3},//offset of the shoot angles relative to the view angles
                 {"extrazvelocity", WEAPON_OFS(extrazvelocity), FT_FLOAT},//extra z velocity the projectile gets
                 {"ammoamount",     WEAPON_OFS(ammoamount),     FT_INT},                //ammo amount used per shot
                 {"ammoindex",      WEAPON_OFS(ammoindex),      FT_INT},                //index of ammo in inventory

@@ -1,33 +1,3 @@
-/*
-===========================================================================
-Copyright (C) 1999-2005 Id Software, Inc.
-
-This file is part of Quake III Arena source code.
-
-Quake III Arena source code is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 2 of the License,
-or (at your option) any later version.
-
-Quake III Arena source code is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with Quake III Arena source code; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-===========================================================================
-*/
-
-/*****************************************************************************
- * name:		l_log.c
- *
- * desc:		log file
- *
- * $Archive: /MissionPack/CODE/botlib/l_log.c $
- *
- *****************************************************************************/
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -40,10 +10,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "l_libvar.h"
 #include "l_log.h"
 
-#define MAX_LOGFILENAMESIZE		1024
+#define MAX_LOGFILENAMESIZE        1024
 
-typedef struct logfile_s
-{
+typedef struct logfile_s {
     char filename[MAX_LOGFILENAMESIZE];
     FILE *fp;
     int numwrites;
@@ -57,24 +26,20 @@ static logfile_t logfile;
 // Returns:					-
 // Changes Globals:		-
 //===========================================================================
-void Log_Open(char *filename)
-{
+void Log_Open(char *filename) {
     char *ospath;
     if (!LibVarValue("log", "0")) return;
-    if (!filename || !strlen(filename))
-    {
+    if (!filename || !strlen(filename)) {
         botimport.Print(PRT_MESSAGE, "openlog <filename>\n");
         return;
     } //end if
-    if (logfile.fp)
-    {
+    if (logfile.fp) {
         botimport.Print(PRT_ERROR, "log file %s is already opened\n", logfile.filename);
         return;
     } //end if
     ospath = FS_BuildOSPath(Cvar_VariableString("fs_homepath"), Cvar_VariableString("fs_game"), filename);
     logfile.fp = fopen(ospath, "wb");
-    if (!logfile.fp)
-    {
+    if (!logfile.fp) {
         botimport.Print(PRT_ERROR, "can't open the log file %s\n", filename);
         return;
     } //end if
@@ -87,11 +52,9 @@ void Log_Open(char *filename)
 // Returns:					-
 // Changes Globals:		-
 //===========================================================================
-void Log_Close(void)
-{
+void Log_Close(void) {
     if (!logfile.fp) return;
-    if (fclose(logfile.fp))
-    {
+    if (fclose(logfile.fp)) {
         botimport.Print(PRT_ERROR, "can't close log file %s\n", logfile.filename);
         return;
     } //end if
@@ -104,8 +67,7 @@ void Log_Close(void)
 // Returns:					-
 // Changes Globals:		-
 //===========================================================================
-void Log_Shutdown(void)
-{
+void Log_Shutdown(void) {
     if (logfile.fp) Log_Close();
 } //end of the function Log_Shutdown
 //===========================================================================
@@ -114,8 +76,7 @@ void Log_Shutdown(void)
 // Returns:					-
 // Changes Globals:		-
 //===========================================================================
-void QDECL Log_Write(char *fmt, ...)
-{
+void QDECL Log_Write(char *fmt, ...) {
     va_list ap;
 
     if (!logfile.fp) return;
@@ -131,8 +92,7 @@ void QDECL Log_Write(char *fmt, ...)
 // Returns:					-
 // Changes Globals:		-
 //===========================================================================
-void QDECL Log_WriteTimeStamped(char *fmt, ...)
-{
+void QDECL Log_WriteTimeStamped(char *fmt, ...) {
     va_list ap;
 
     if (!logfile.fp) return;
@@ -156,8 +116,7 @@ void QDECL Log_WriteTimeStamped(char *fmt, ...)
 // Returns:					-
 // Changes Globals:		-
 //===========================================================================
-FILE *Log_FilePointer(void)
-{
+FILE *Log_FilePointer(void) {
     return logfile.fp;
 } //end of the function Log_FilePointer
 //===========================================================================
@@ -166,8 +125,7 @@ FILE *Log_FilePointer(void)
 // Returns:					-
 // Changes Globals:		-
 //===========================================================================
-void Log_Flush(void)
-{
+void Log_Flush(void) {
     if (logfile.fp) fflush(logfile.fp);
 } //end of the function Log_Flush
 

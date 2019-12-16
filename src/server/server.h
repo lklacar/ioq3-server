@@ -1,26 +1,3 @@
-/*
-===========================================================================
-Copyright (C) 1999-2005 Id Software, Inc.
-
-This file is part of Quake III Arena source code.
-
-Quake III Arena source code is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 2 of the License,
-or (at your option) any later version.
-
-Quake III Arena source code is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with Quake III Arena source code; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-===========================================================================
-*/
-// server.h
-
 #include "../qcommon/q_shared.h"
 #include "../qcommon/qcommon.h"
 #include "../game/g_public.h"
@@ -122,7 +99,7 @@ typedef struct netchan_buffer_s {
     msg_t msg;
     byte msgBuffer[MAX_MSGLEN];
 #ifdef LEGACY_PROTOCOL
-    char		clientCommandString[MAX_STRING_CHARS];	// valid command string for SV_Netchan_Encode
+    char clientCommandString[MAX_STRING_CHARS];    // valid command string for SV_Netchan_Encode
 #endif
     struct netchan_buffer_s *next;
 } netchan_buffer_t;
@@ -194,7 +171,7 @@ typedef struct client_s {
     qboolean csUpdated[MAX_CONFIGSTRINGS];
 
 #ifdef LEGACY_PROTOCOL
-    qboolean		compat;
+    qboolean compat;
 #endif
 } client_t;
 
@@ -332,9 +309,9 @@ qboolean SVC_RateLimitAddress(netadr_t from, int burst, int period);
 void SV_FinalMessage(char *message);
 
 void QDECL
-SV_SendServerCommand( client_t
-*cl,
-const char *fmt, ...
+SV_SendServerCommand(client_t
+                     *cl,
+                     const char *fmt, ...
 ) __attribute__ ((format (printf, 2, 3)));
 
 
