@@ -16,7 +16,7 @@ function sendMessageToMaster(ws, message) {
 }
 
 module.exports = function handleMaster(masterServerUrl) {
-    const ws = new WebSocket(masterServerUrl);
+    const ws = new WebSocket(masterServerUrl, {headers: {"x-forwarded-port": 27961}});
 
     ws.onopen = function () {
         (function execute() {
