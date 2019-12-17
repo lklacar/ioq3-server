@@ -3644,3 +3644,12 @@ int QDECL Com_strCompare(const void *a, const void *b) {
     const char **pb = (const char **) b;
     return strcmp(*pa, *pb);
 }
+
+
+const char *Com_GetCDN(void) {
+    return Cvar_VariableString("fs_cdn");
+}
+
+const char *Com_GetManifest(void) {
+    return Cvar_VariableString("fs_manifest");
+}

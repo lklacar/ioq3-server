@@ -225,6 +225,10 @@ static  cvar_t          *fs_apppath;
 static cvar_t *fs_steampath;
 static cvar_t *fs_gogpath;
 
+static	cvar_t		*fs_cdn;
+static	cvar_t		*fs_manifest;
+static	cvar_t		*fs_completeManifest;
+
 static cvar_t *fs_basepath;
 static cvar_t *fs_basegame;
 static cvar_t *fs_gamedirvar;
@@ -3180,6 +3184,11 @@ static void FS_Startup(const char *gameName) {
 	fs_packFiles = 0;
 
 	fs_debug = Cvar_Get("fs_debug", "0", 0);
+
+    fs_cdn = Cvar_Get("fs_cdn", "localhost:9000", CVAR_INIT | CVAR_SERVERINFO);
+    fs_manifest = Cvar_Get("fs_manifest", "", CVAR_ROM | CVAR_SERVERINFO);
+    fs_completeManifest = Cvar_Get("fs_completeManifest", "", CVAR_ROM);
+
 	fs_basepath = Cvar_Get("fs_basepath", Sys_DefaultInstallPath(), CVAR_INIT | CVAR_PROTECTED);
 	fs_basegame = Cvar_Get("fs_basegame", "", CVAR_INIT);
 	homePath = Sys_DefaultHomePath();
