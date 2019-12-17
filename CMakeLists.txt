@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.13.4)
 project(q3_server C)
 
 add_compile_definitions(ARCH_STRING=x86_64)
@@ -7,6 +7,10 @@ add_compile_definitions(QDECL=)
 add_compile_definitions(BOTLIB)
 add_compile_definitions(DEDICATED)
 #add_compile_definitions(Q3_VM)
+#add_compile_definitions(ID_INLINE=)
+#add_compile_definitions(Q3_LITTLE_ENDIAN)
+#add_compile_definitions(PATH_SEP=/)
+
 
 set(CMAKE_C_STANDARD 99)
 
@@ -28,7 +32,8 @@ add_executable(q3_server
         src/qcommon/huffman.c
         src/qcommon/cm_patch.c
         src/qcommon/cm_trace.c
-        src/vm/vm_x86.c
+#        src/vm/vm_x86.c
+        src/vm/vm_js.js
         src/botlib/be_aas_entity.h
         src/sys/sys_main.c
         src/sys/sys_unix.c
@@ -109,7 +114,7 @@ add_executable(q3_server
         src/server/sv_net_chan.c
         src/botlib/be_ai_weight.c
         src/botlib/be_ai_weap.c
-        src/asm/snapvector.c
+#        src/asm/snapvector.c
         src/qcommon/cm_public.h
         src/botlib/be_aas_route.c
         src/botlib/be_ai_move.c
@@ -125,7 +130,7 @@ add_executable(q3_server
         src/botlib/be_aas_bsp.h
         src/botlib/be_aas_optimize.h
         src/qcommon/q_common.h
-        src/asm/ftola.c
+#        src/asm/ftola.c
         src/botlib/be_aas_funcs.h
         src/qcommon/net_chan.c
         src/server/sv_bot.c
@@ -137,3 +142,5 @@ add_executable(q3_server
         )
 
 target_link_libraries(q3_server m z ${CMAKE_DL_LIBS})
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_ZLIB=1 -s ERROR_ON_UNDEFINED_SYMBOLS=0 -s ALLOW_MEMORY_GROWTH=1")

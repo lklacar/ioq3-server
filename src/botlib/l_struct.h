@@ -1,6 +1,6 @@
 
 
-#include <bits/types/FILE.h>
+//#include <bits/types/FILE.h>
 
 #define MAX_STRINGFIELD                80
 //field types

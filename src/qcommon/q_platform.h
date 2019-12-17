@@ -55,6 +55,15 @@
 
 //================================================================= WIN64/32 ===
 
+#if defined(EMSCRIPTEN)
+#define Q3_LITTLE_ENDIAN
+#define PATH_SEP '/'
+#define DLL_EXT ".js"
+#define ID_INLINE inline
+#define OS_STRING "emscripten"
+#endif
+
+
 #if defined(_WIN64) || defined(__WIN64__)
 
 #undef idx64
@@ -359,3 +368,4 @@ float FloatSwap(const float *f);
 #endif
 
 #endif
+

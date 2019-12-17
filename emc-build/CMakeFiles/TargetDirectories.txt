@@ -1,0 +1,3 @@
+/home/luka/CLionProjects/q3-server/emc-build/CMakeFiles/rebuild_cache.dir
+/home/luka/CLionProjects/q3-server/emc-build/CMakeFiles/q3_server.dir
+/home/luka/CLionProjects/q3-server/emc-build/CMakeFiles/edit_cache.dir

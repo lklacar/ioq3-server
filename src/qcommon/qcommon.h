@@ -2,7 +2,7 @@
 #ifndef _QCOMMON_H_
 #define _QCOMMON_H_
 
-#include <bits/types/FILE.h>
+//#include <bits/types/FILE.h>
 #include "cm_public.h"
 
 //Ignore __attribute__ on non-gcc platforms
