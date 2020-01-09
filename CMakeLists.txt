@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.13.4)
 project(q3_server C)
 
-add_compile_definitions(ARCH_STRING=x86_64)
+add_compile_definitions(ARCH_STRING="x86_64")
 add_compile_definitions(QDECL=)
 #add_compile_definitions(SCREWUP)
 add_compile_definitions(BOTLIB)
