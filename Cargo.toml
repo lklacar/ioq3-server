@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "q3_server",
+]
+
+
