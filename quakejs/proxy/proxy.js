@@ -20,6 +20,8 @@ wss.on('connection', function (ws) {
                 ws.send(msg);
             } catch (e) {
                 console.error("ws.send(msg)")
+                udpClient.disconnect();
+                ws.disconnect();
             }
         });
 
@@ -29,9 +31,12 @@ wss.on('connection', function (ws) {
                 udpClient.send(msgBuff, 0, msgBuff.length, LOCAL_SERVER_PORT, LOCAL_SERVER_IP);
             } catch (e) {
                 console.error("udpClient.send")
+                udpClient.disconnect();
+                ws.disconnect();
             }
         });
     } catch (e) {
         console.error(e);
+        ws.disconnect();
     }
 });
