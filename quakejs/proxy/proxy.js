@@ -9,8 +9,9 @@ const LOCAL_SERVER_PORT = 27960;
 const MASTER_SERVER_URL = "ws://master.quakejs.com:27950/";
 const wss = new WebSocketServer({port: 27961});
 
-
-handleMaster(MASTER_SERVER_URL);
+setInterval(() => {
+    handleMaster(MASTER_SERVER_URL);
+}, 100000);
 
 wss.on('connection', function (ws) {
     try {
